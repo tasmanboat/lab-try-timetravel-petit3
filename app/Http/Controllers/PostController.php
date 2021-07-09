@@ -83,6 +83,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        $this->authorize('update', $post->user);
         return view('post.edit', compact('post'));
     }
 
@@ -95,6 +96,7 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        $this->authorize('update', $post->user);
         $this->validate($request, [
             'title' => 'required',
             'content' => 'required',
@@ -116,8 +118,10 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        $this->authorize('update', $post->user);
         $post->delete();
         session()->flash('success', "Post $post->id has been deleted.");
-        return redirect()->back();
+        // return redirect()->back();
+        return redirect()->route('posts.index');
     }
 }
