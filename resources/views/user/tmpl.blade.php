@@ -24,5 +24,6 @@
       @include('user._footer')
     </div>
   </div>
+  @yield('script')
 </body>
 </html>

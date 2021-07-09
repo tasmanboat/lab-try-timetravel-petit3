@@ -13,10 +13,10 @@
       @include('user._errors')
 
       <div class="form-group">
-        <input type="text" name="title" class="form-control" value="{{ old('title') ?? $post->title }}">
+        <input type="text" name="title" id="title" class="form-control" value="{{ old('title') ?? $post->title }}">
       </div>
       <div class="form-group">
-        <textarea name="content" rows="10" class="form-control">{{ old('content') ?? $post->content }}</textarea>
+        <textarea name="content" id="content" rows="10" class="form-control">{{ old('content') ?? $post->content }}</textarea>
       </div>
 
       <button type="submit" class="btn btn-primary">Submit</button>
@@ -25,4 +25,14 @@
     </form>
   </div>
 </div>
+@endsection
+
+@section('script')
+<script crossorigin src="https://unpkg.com/tinymce@5.8.2/tinymce.min.js"></script>
+<script>
+  tinymce.init({
+    selector: '#content',
+    plugins: 'code',
+  });
+</script>
 @endsection
