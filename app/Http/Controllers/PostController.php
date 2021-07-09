@@ -122,6 +122,7 @@ class PostController extends Controller
         $post->delete();
         session()->flash('success', "Post $post->id has been deleted.");
         // return redirect()->back();
-        return redirect()->route('posts.index');
+        // return redirect()->route('posts.index');
+        return redirect()->route('users.show', $post->user);
     }
 }

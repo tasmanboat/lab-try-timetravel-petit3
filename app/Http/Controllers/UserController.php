@@ -73,7 +73,10 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('user.show', compact('user'));
+        // return view('user.show', compact('user'));
+        $count = $user->posts()->count();
+        $posts = $user->posts()->orderBy('created_at', 'desc')->paginate(10);
+        return view('user.show', compact('user', 'count', 'posts'));
     }
 
     /**
