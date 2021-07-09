@@ -15,7 +15,17 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        // $count = Post::all()->count();
+        // $posts = Post::all();
+        // return view('post.index', compact('posts', 'count'));
+
+        // $count = Post::all()->count();
+        // $posts = Post::paginate(10);
+        // return view('post.index', compact('posts', 'count'));
+
+        $count = Post::all()->count();
+        $posts = Post::orderBy('created_at', 'desc')->paginate(10);
+        return view('post.index', compact('posts', 'count'));
     }
 
     /**
@@ -25,7 +35,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('post.create');
     }
 
     /**
@@ -57,7 +67,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('post.show', compact('post'));
     }
 
     /**
@@ -68,7 +78,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('post.edit', compact('post'));
     }
 
     /**
