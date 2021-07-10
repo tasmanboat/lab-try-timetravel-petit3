@@ -7,7 +7,11 @@ use Faker\Generator as Faker;
 
 $factory->define(Post::class, function (Faker $faker) {
     $date_time = $faker->date . ' ' . $faker->time;
-    $content = implode('<br />', $faker->paragraphs(3));
+    $paragraphs = $faker->paragraphs(3);
+    $content = '';
+    foreach ($paragraphs as $para) {
+        $content .= '<p>' . $para . '</p>';
+    }
     return [
         // 'user_id' =>,
         'title'      => $faker->sentence(),
