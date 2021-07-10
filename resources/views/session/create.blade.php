@@ -13,16 +13,16 @@
 
       <div class="form-group">
         <label for="email">Email:</label>
-        <input type="text" name="email" class="form-control" value="{{ old('email') }}">
+        <input type="text" name="email" id="email" class="form-control" value="{{ old('email') }}">
       </div>
       <div class="form-group">
         <label for="password">Password:</label>
-        <input type="password" name="password" class="form-control" value="{{ old('password') }}">
+        <input type="password" name="password" id="password" class="form-control" value="{{ old('password') }}">
       </div>
 
       <div class="form-group">
         <div class="form-check">
-          <input type="checkbox" class="form-check-input" name="remember">
+          <input type="checkbox" class="form-check-input" name="remember" id="remember">
           <label for="remember_me">Remember me</label>
         </div>
       </div>
