@@ -20,16 +20,17 @@ class PostController extends Controller
      */
     public function index()
     {
-        // $count = Post::all()->count();
-        // $posts = Post::all();
+        // $posts = Post::with('user')->get();
+        // $count = $posts->count();
         // return view('post.index', compact('posts', 'count'));
 
-        // $count = Post::all()->count();
-        // $posts = Post::paginate(10);
+        // $posts = Post::with('user')->orderBy('created_at', 'desc')->get();
+        // $count = $posts->count();
         // return view('post.index', compact('posts', 'count'));
 
-        $count = Post::all()->count();
-        $posts = Post::orderBy('created_at', 'desc')->paginate(10);
+        $paginator = Post::with('user')->orderBy('created_at', 'desc')->paginate(10);
+        $posts = $paginator;
+        $count = $paginator->total();
         return view('post.index', compact('posts', 'count'));
     }
 

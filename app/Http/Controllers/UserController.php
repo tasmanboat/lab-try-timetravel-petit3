@@ -21,12 +21,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        // $count = User::all()->count();
         // $users = User::all();
+        // $count = $users->count();
         // return view('user.index', compact('users', 'count'));
 
-        $count = User::all()->count();
-        $users = User::paginate(10);
+        $paginator = User::paginate(10);
+        $users = $paginator;
+        $count = $paginator->total();
         return view('user.index', compact('users', 'count'));
     }
 
